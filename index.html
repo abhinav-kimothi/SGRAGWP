@@ -3,371 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhinav Kimothi</title>
+    <title>Abhinav Kimothi - Portfolio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'verdana';
-        }
-
         body {
-            background-color: #f9fafb;
-            color: #333;
-            line-height: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
         }
-
-        .container {
-            max-width: 800px;
-            padding: 2rem;
-            background-color: #ffffff;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-        }
-
+        
         .header-content {
             text-align: center;
             margin-bottom: 2rem;
         }
-
+        
         .profile-pic {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            opacity: 0;
-            transform: translateX(-100%);
-        }
-
-        .name-signature {
-            margin-top: 1rem;
-            opacity: 0;
-            transform: translateX(100%);
-        }
-
-        .signature {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .about-me {
-            background-color: #f8fafc;
-            padding: 2rem;
-            line-height: 1.2;
-            border-radius: 0.5rem;
-            margin: 2rem 0;
-            box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-        .about-me h2 {
-            color: #fe633d;
             margin-bottom: 1rem;
-            font-size: 1.2rem;
+        }
+        
+        .signature {
+            max-width: 200px;
+            margin: 1rem 0;
+        }
+        
+        .about-me {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
         }
 
-        .about-me p {
-            text-align: justify;
-            color: #4b5563;
-        }
-
-        .publications-carousel {
-            margin: 2rem 0;
-            position: relative;
-            padding: 0 2rem;
-        }
-
-        .publications-carousel h3 {
-            color: #fe633d;
-            text-align: left;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
+        /* Carousel Styles */
         .carousel-container {
-            overflow: hidden;
             position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
         }
 
         .carousel {
             display: flex;
-            transition: transform 0.5s ease;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            gap: 2rem;
+            padding: 1rem 0;
         }
 
         .carousel-item {
-            flex: 0 0 33.333%;
-            padding: 1rem;
-            font-size: 0.8rem;
+            flex: 0 0 300px;
+            scroll-snap-align: start;
             text-align: center;
-            color:#fe633d
-        }
-
-        .carousel-item a {
-            padding: 1rem;
-            font-size: 0.8rem;
-            text-align: center;
-            color:#000000;
-            text-decoration: none;
-        }
-
-        .carousel-item :hover {
-            color:#fe633d;
-            text-decoration: none;
-        }
-
-        .carousel-item :visited {
-            color:#28292b;
-            text-decoration: none;
-        }
-
-        .carousel-item:active {
-            color:#fe633d;
         }
 
         .carousel-item img {
-            width: 120px;
-            height: 120px;
-            border-radius: 0.5rem;
-            margin-bottom: 0.5rem;
-            transition: transform 0.5s ease;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
         }
 
-        .carousel-item:hover img {
-            transform: scale(1.1);
+        .carousel-item a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        .carousel-btn {
+        .carousel-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: #fe633d;
+            background: rgba(0, 0, 0, 0.5);
             color: white;
             border: none;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
             width: 40px;
             height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
         }
 
-        .carousel-btn:hover {
-            background-color: #000000;
+        .carousel-button:hover {
+            background: rgba(0, 0, 0, 0.7);
         }
 
-        .carousel-btn.prev {
+        .carousel-button.prev {
             left: 0;
         }
 
-        .carousel-btn.next {
+        .carousel-button.next {
             right: 0;
         }
-
+        
         .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1rem;
         }
-
+        
         .social-links a {
-            color: #f97316;
+            margin: 0 1rem;
             text-decoration: none;
-            font-size: 0.7rem;
-            transition: color 0.3s ease;
+            color: #0066cc;
         }
-
-        .social-links a:hover {
-            color: #000000;
-        }
-
-        /* Animations */
-        .slide-in-left {
-            animation: slideInLeft 1s forwards;
-        }
-
-        .slide-in-right {
-            animation: slideInRight 1s forwards;
-        }
-
-        .slide-in-top {
-            animation: slideInTop 1s forwards;
-        }
-
-        .slide-in-bottom {
-            animation: slideInBottom 1s forwards;
-        }
-
-        @keyframes slideInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInTop {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInBottom {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        h2, h3 {
+            text-align: center;
+            margin: 2rem 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-content">
-            <img src="round solid.png" alt="Abhinav's Photo" class="profile-pic">
-            <div class="name-signature">
-                <img src="Signature.png" alt="Signature" class="signature">
-            </div>
-        </div>
-
-        <div class="about-me">
-            <h2>Hi! I'm Abhinav!</h2>
-            <p>
-                Over the last 15 years I have built impactful AI and ML solutions. 
-                I'm the co-founder and head of AI at Yarnit, where my team is transforming content 
-                marketing through Generative AI and ML-driven content production.
-                <br><br>
-                I'm also the author of A Simple Guide to Retrieval Augmented Generation, 
-                exploring practical AI advancements.
-                <br><br>
-                I talk about #AI #MachineLearning #DataScience #GenerativeAI #DataProducts 
-                #Analytics #LLMs #Technology #Education #EthicalAI. If our interests align, 
-                let's connect!
-            </p>
-        </div>
-
-        <div class="publications-carousel">
-            <h3>Books, Publications, and Products</h3>
-            <div class="carousel-container">
-                <div class="carousel">
-                    <div class="carousel-item">
-                        <a href="https://mng.bz/jXJ9" target="_blank">
-                            <img src="SGRAG square.png" alt="A Simple Guide to Retrieval Augmented Generation">
-                            <p>A Simple Guide to Retrieval Augmented Generation</p>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="https://www.yarnit.app" target="_blank">
-                            <img src="Yarnit.png" alt="A Simple Guide to Retrieval Augmented Generation">
-                            <p>Yarnit - B2B Content Marketing SaaS</p>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="https://abhinavkimothi.gumroad.com/l/GenAILLM" target="_blank">
-                            <img src="GenAILLM.png" alt="Another Publication">
-                            <p>Generative AI with Large Language Models</p>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="https://abhinavkimothi.gumroad.com/l/RAG" target="_blank">
-                            <img src="RAG Square.png" alt="Another Publication">
-                            <p>RAG - A Simple Introduction
-                            </p>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="https://abhinavkimothi.gumroad.com/l/GenAITaxonomy" target="_blank">
-                            <img src="Gen AI Terminology.png" alt="Another Publication">
-                            <p>Generative AI Terminology</p>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="https://abhinavkimothi.gumroad.com/l/TaxRAG" target="_blank">
-                            <img src="RAG Taxonomy.png" alt="Another Publication">
-                            <p>A Taxonomy of Retrieval Augmented Generation</p>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="https://abhinavkimothi.gumroad.com/l/GenAIEssentials" target="_blank">
-                            <img src="GenAI Bundle.png" alt="Another Publication">
-                            <p>Generative AI Essentials: Four must-read guides</p>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="https://medium.com/the-rag-explorer" target="_blank">
-                            <img src="TheRAGExplorer.png" alt="Another Publication">
-                            <p>The RAG Explorer on Medium
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-btn prev">‹</button>
-            <button class="carousel-btn next">›</button>
-        </div>
-
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/abhinav-kimothi" target="_blank">LinkedIn</a>
-            <a href="https://medium.com/@abhinavkimothi" target="_blank">Medium</a>
-            <a href="https://github.com/your-username" target="_blank">GitHub</a>
-            <a href="https://www.manning.com/books/a-simple-guide-to-retrieval-augmented-generation" target="_blank">My Book</a>
+    <div class="header-content">
+        <img src="round solid.png" alt="Abhinav's Photo" class="profile-pic">
+        <div class="name-signature">
+            <img src="Signature.png" alt="Signature" class="signature">
         </div>
     </div>
 
+    <div class="about-me">
+        <h2>Hi! I'm Abhinav!</h2>
+        <p>
+            Over the last 15 years I have built impactful AI and ML solutions. I'm the co-founder and head of AI at Yarnit, 
+            where my team is transforming content marketing through Generative AI and ML-driven content production.
+        </p>
+        <p>
+            I'm also the author of A Simple Guide to Retrieval Augmented Generation, exploring practical AI advancements.
+        </p>
+        <p>
+            I talk about #AI #MachineLearning #DataScience #GenerativeAI #DataProducts #Analytics #LLMs #Technology #Education #EthicalAI. 
+            If our interests align, let's connect!
+        </p>
+    </div>
+
+    <h3>Books, Publications, and Products</h3>
+    <div class="carousel-container">
+        <button class="carousel-button prev">‹</button>
+        <div class="carousel">
+            <div class="carousel-item">
+                <a href="https://mng.bz/jXJ9" target="_blank">
+                    <img src="SGRAG square.png" alt="A Simple Guide to Retrieval Augmented Generation">
+                    <p>A Simple Guide to Retrieval Augmented Generation</p>
+                </a>
+            </div>
+            
+            <div class="carousel-item">
+                <a href="https://www.yarnit.app" target="_blank">
+                    <img src="Yarnit.png" alt="Yarnit">
+                    <p>Yarnit - B2B Content Marketing SaaS</p>
+                </a>
+            </div>
+            
+            <div class="carousel-item">
+                <a href="https://abhinavkimothi.gumroad.com/l/GenAILLM" target="_blank">
+                    <img src="GenAILLM.png" alt="Generative AI with Large Language Models">
+                    <p>Generative AI with Large Language Models</p>
+                </a>
+            </div>
+            
+            <div class="carousel-item">
+                <a href="https://abhinavkimothi.gumroad.com/l/RAG" target="_blank">
+                    <img src="RAG Square.png" alt="RAG - A Simple Introduction">
+                    <p>RAG - A Simple Introduction</p>
+                </a>
+            </div>
+            
+            <div class="carousel-item">
+                <a href="https://abhinavkimothi.gumroad.com/l/GenAITaxonomy" target="_blank">
+                    <img src="Gen AI Terminology.png" alt="Generative AI Terminology">
+                    <p>Generative AI Terminology</p>
+                </a>
+            </div>
+            
+            <div class="carousel-item">
+                <a href="https://abhinavkimothi.gumroad.com/l/TaxRAG" target="_blank">
+                    <img src="RAG Taxonomy.png" alt="A Taxonomy of Retrieval Augmented Generation">
+                    <p>A Taxonomy of Retrieval Augmented Generation</p>
+                </a>
+            </div>
+            
+            <div class="carousel-item">
+                <a href="https://abhinavkimothi.gumroad.com/l/GenAIEssentials" target="_blank">
+                    <img src="GenAI Bundle.png" alt="Generative AI Essentials">
+                    <p>Generative AI Essentials: Four must-read guides</p>
+                </a>
+            </div>
+            
+            <div class="carousel-item">
+                <a href="https://medium.com/the-rag-explorer" target="_blank">
+                    <img src="TheRAGExplorer.png" alt="The RAG Explorer">
+                    <p>The RAG Explorer on Medium</p>
+                </a>
+            </div>
+        </div>
+        <button class="carousel-button next">›</button>
+    </div>
+
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/abhinav-kimothi" target="_blank">LinkedIn</a>
+        <a href="https://medium.com/@abhinavkimothi" target="_blank">Medium</a>
+        <a href="https://github.com/your-username" target="_blank">GitHub</a>
+        <a href="https://www.manning.com/books/a-simple-guide-to-retrieval-augmented-generation" target="_blank">My Book</a>
+    </div>
+
     <script>
-        window.addEventListener('load', function() {
-            // Profile picture pans in from the left
-            document.querySelector('.profile-pic').classList.add('slide-in-left');
-            
-            // Name and signature pan in from the right
-            document.querySelector('.name-signature').classList.add('slide-in-right');
-            
-            // About me section pans in from the top
-            document.querySelector('.about-me').classList.add('slide-in-top');
-            
-            // Social links pan in from the bottom
-            document.querySelector('.social-links').classList.add('slide-in-bottom');
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             const carousel = document.querySelector('.carousel');
-            const items = document.querySelectorAll('.carousel-item');
-            const itemsToShow = 3;
-            const totalItems = items.length;
-            let currentIndex = 0;
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            const itemWidth = 300 + 32; // width + gap
 
-            document.querySelector('.carousel-btn.next').addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % (totalItems - itemsToShow + 1);
-                updateCarousel();
+            prevButton.addEventListener('click', () => {
+                carousel.scrollBy({
+                    left: -itemWidth,
+                    behavior: 'smooth'
+                });
             });
 
-            document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalItems) % (totalItems - itemsToShow + 1);
-                updateCarousel();
+            nextButton.addEventListener('click', () => {
+                carousel.scrollBy({
+                    left: itemWidth,
+                    behavior: 'smooth'
+                });
             });
-
-            function updateCarousel() {
-                const offset = -(currentIndex * (100 / itemsToShow));
-                carousel.style.transform = `translateX(${offset}%)`;
-            }
         });
     </script>
 </body>
