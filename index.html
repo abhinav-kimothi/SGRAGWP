@@ -9,25 +9,30 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'verdana';
+            font-family: 'Verdana';
         }
 
         body {
-            background-color: #f9fafb;
+            background-image: url("background.png");
+            background-attachment: fixed;
+            background-color: #fe633d;
             color: #333;
             line-height: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             padding: 2rem;
-            background-color: #ffffff;
+            background-color: #000000;
             border-radius: 1rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            opacity: .9;
+            margin: 2rem;
         }
 
         .header-content {
@@ -40,7 +45,7 @@
             height: 200px;
             border-radius: 50%;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            box-shadow: 0 4px 6px -1px #fe633d;
             opacity: 0;
             transform: translateX(-100%);
         }
@@ -57,7 +62,7 @@
         }
 
         .about-me {
-            background-color: #f8fafc;
+            background-color: #000000;
             padding: 2rem;
             line-height: 1.2;
             border-radius: 0.5rem;
@@ -75,7 +80,7 @@
 
         .about-me p {
             text-align: justify;
-            color: #4b5563;
+            color: #f8fafc;
         }
 
         .publications-carousel {
@@ -94,6 +99,9 @@
         .carousel-container {
             overflow: hidden;
             position: relative;
+            opacity: 0;
+            transform: translateX(-100%);
+
         }
 
         .carousel {
@@ -113,7 +121,7 @@
             padding: 1rem;
             font-size: 0.8rem;
             text-align: center;
-            color:#000000;
+            color:#f8fafc;
             text-decoration: none;
         }
 
@@ -123,7 +131,7 @@
         }
 
         .carousel-item :visited {
-            color:#28292b;
+            color:#f8fafc;
             text-decoration: none;
         }
 
@@ -211,6 +219,10 @@
             animation: slideInBottom 1s forwards;
         }
 
+        .slide-in-carousel {
+           animation: slideInCarousel 1s forwards;
+        }
+
         @keyframes slideInLeft {
             to {
                 opacity: 1;
@@ -236,6 +248,13 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInCarousel {
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
             
@@ -348,6 +367,9 @@
             
             // Social links pan in from the bottom
             document.querySelector('.social-links').classList.add('slide-in-bottom');
+
+            document.querySelector('.carousel-container').classList.add('slide-in-carousel');
+
         });
 
         document.addEventListener('DOMContentLoaded', () => {
